@@ -30,15 +30,15 @@ const manifest = {
   },
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
-  host_permissions: ['<all_urls>'],
-  permissions: ['storage', 'scripting', 'tabs', 'notifications', 'sidePanel'],
+  host_permissions: ['<all_urls>', 'http://localhost/*'],
+  permissions: ['storage', 'scripting', 'activeTab', 'tabs', 'notifications', 'sidePanel'],
   options_page: 'options/index.html',
   background: {
     service_worker: 'background.js',
     type: 'module',
   },
+  // No default_popup: clicking the toolbar icon opens the side panel (see background).
   action: {
-    default_popup: 'popup/index.html',
     default_icon: 'icon-34.png',
   },
   chrome_url_overrides: {
