@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Assistant</title>
+<style>
+  :root {
+    --bg: #f7f7f8; --panel: #ffffff; --text: #1f2328; --muted: #6b7280;
+    --border: #e5e7eb; --accent: #4f46e5; --user: #eef2ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  header {
+    position: sticky; top: 0; background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 14px 20px; display: flex; align-items: center; gap: 10px; font-weight: 600;
+  }
+  .logo {
+    width: 28px; height: 28px; border-radius: 8px; background: var(--accent); color: #fff;
+    display: grid; place-items: center; font-size: 14px;
+  }
+  .model { margin-left: auto; font-weight: 400; font-size: 13px; color: var(--muted); }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 16px 80px; }
+  .msg { display: flex; gap: 12px; margin-bottom: 24px; }
+  .msg.user { justify-content: flex-end; }
+  .bubble { padding: 12px 16px; border-radius: 14px; max-width: 85%; }
+  .user .bubble { background: var(--user); }
+  .assistant .bubble { background: var(--panel); border: 1px solid var(--border); }
+  .avatar {
+    flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--accent);
+    color: #fff; display: grid; place-items: center; font-size: 13px; font-weight: 600;
+  }
+  .bubble p { margin: 0 0 12px; }
+  .bubble p:last-child { margin-bottom: 0; }
+  a.cite {
+    font-size: 12px; vertical-align: super; line-height: 0; color: var(--accent);
+    text-decoration: none; padding: 0 2px;
+  }
+  a.cite:hover { text-decoration: underline; }
+  .sources { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+  .sources ol { margin: 4px 0 0; padding-left: 20px; }
+  .sources a { color: var(--muted); word-break: break-all; }
+  .composer {
+    position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, var(--bg) 30%);
+    padding: 20px 16px 16px;
+  }
+  .composer div {
+    max-width: 760px; margin: 0 auto; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 16px; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<header><span class="logo">✦</span> AI Assistant <span class="model">Assistant 4 · web search on</span></header>
+
+<main>
+  <div class="msg user"><div class="bubble">Is there any public art on Montreal's REM?</div></div>
+
+  <div class="msg assistant">
+    <div class="avatar">AI</div>
+    <div class="bubble">
+      <p>Yes! The REM has a dedicated public art program.</p>
+      <p>
+        The REM's permanent artworks are valued at $7.3 million, and temporary works are being created in collaboration with four Montreal universities.<a class="cite" href="https://rem.info/fr/unir">[1]</a>
+        A separate $5 million budget funds the temporary artworks created by university students.<a class="cite" href="https://rem.info/fr/unir">[1]</a>
+      </p>
+      <p>
+        In fall 2024, two permanent artworks were inaugurated at the Brossard and Panama stations.<a class="cite" href="https://rem.info/fr/actualites/deux-oeuvres-dart-admirer-des-maintenant-aux-stations-brossard-et-panama">[2]</a>
+        In February 2025, CDPQ Infra revealed the names of the artists creating public artworks for five new REM stations.<a class="cite" href="https://www.lapresse.ca/arts/arts-visuels/2025-02-20/cinq-artistes-embelliront-les-stations-du-rem.php">[3]</a>
+      </p>
+      <div class="sources">
+        Sources
+        <ol>
+          <li><a href="https://rem.info/fr/unir">rem.info/fr/unir</a></li>
+          <li><a href="https://rem.info/fr/actualites/deux-oeuvres-dart-admirer-des-maintenant-aux-stations-brossard-et-panama">rem.info/fr/actualites/deux-oeuvres-dart-admirer…</a></li>
+          <li><a href="https://www.lapresse.ca/arts/arts-visuels/2025-02-20/cinq-artistes-embelliront-les-stations-du-rem.php">lapresse.ca/arts/arts-visuels/2025-02-20/cinq-artistes…</a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="composer"><div>Ask anything…</div></div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "receipts-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^3.1.0",
+    "cors": "^2.8.6",
+    "express": "^5.3.0"
+  }
+}
