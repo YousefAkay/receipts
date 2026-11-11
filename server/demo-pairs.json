@@ -1,6 +1,29 @@
-{"pairs":[
-{"id":"s1","claim":"The REM's permanent artworks are valued at $7.3 million, and temporary works are being created in collaboration with four Montreal universities.","url":"https://rem.info/fr/unir"},
-{"id":"s2","claim":"A separate $5 million budget funds the temporary artworks created by university students.","url":"https://rem.info/fr/unir"},
-{"id":"s3","claim":"In fall 2024, two permanent artworks were inaugurated at the Brossard and Panama stations.","url":"https://rem.info/fr/actualites/deux-oeuvres-dart-admirer-des-maintenant-aux-stations-brossard-et-panama"},
-{"id":"s4","claim":"In February 2025, CDPQ Infra revealed the names of the artists creating public artworks for five new REM stations.","url":"https://www.lapresse.ca/arts/arts-visuels/2025-02-20/cinq-artistes-embelliront-les-stations-du-rem.php"}
-]}
+{
+  "pairs": [
+    {
+      "id": "s1",
+      "claim": "The REM's permanent artworks are valued at $7.3 million, and temporary works are being created in collaboration with four Montreal universities.",
+      "url": "https://rem.info/fr/unir"
+    },
+    {
+      "id": "s2",
+      "claim": "A separate $5 million budget funds the temporary artworks created by university students.",
+      "url": "https://rem.info/fr/unir"
+    },
+    {
+      "id": "s3",
+      "claim": "In fall 2024, two permanent artworks were inaugurated at the Brossard and Panama stations.",
+      "url": "https://rem.info/fr/actualites/deux-oeuvres-dart-admirer-des-maintenant-aux-stations-brossard-et-panama"
+    },
+    {
+      "id": "s4",
+      "claim": "In February 2025, CDPQ Infra revealed the names of the artists creating public artworks for five new REM stations.",
+      "url": "https://www.lapresse.ca/arts/arts-visuels/2025-02-20/cinq-artistes-embelliront-les-stations-du-rem.php"
+    },
+    {
+      "id": "w1",
+      "claim": "Preparatory work began in late March 2018.",
+      "url": "https://rem.info/en/news/south-shore-preparatory-work-gets-underway"
+    }
+  ]
+}

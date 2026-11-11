@@ -1,3 +1,4 @@
+import { readFile } from 'node:fs/promises';
 import express from 'express';
 import cors from 'cors';
 import { GoogleGenAI, Type, ThinkingLevel } from '@google/genai';
@@ -195,6 +196,41 @@ async function verifyPair(pair) {
   }
 }
 
+// ---------- cache ----------
+
+// In-memory, keyed by claim+url, so re-checks return instantly with identical results.
+// Stores the in-flight promise so concurrent duplicates share one check. Unreachable
+// results (timeouts, checker errors) are evicted so a transient failure isn't frozen in.
+const cache = new Map();
+
+function verifyCached(pair) {
+  const claim = String(pair?.claim ?? '');
+  const url = String(pair?.url ?? '');
+  const key = `${claim}\u0000${url}`;
+  let entry = cache.get(key);
+  if (entry) {
+    console.log(`[verify] cache hit: ${url} | ${claim.slice(0, 60)}`);
+  } else {
+    entry = verifyPair({ claim, url }).then(result => {
+      if (result.verdict === 'unreachable') cache.delete(key);
+      return result;
+    });
+    cache.set(key, entry);
+  }
+  return entry.then(result => ({ ...result, id: String(pair?.id ?? '') }));
+}
+
+async function prewarm() {
+  const file = new URL('./demo-pairs.json', import.meta.url);
+  try {
+    const { pairs } = JSON.parse(await readFile(file, 'utf8'));
+    const results = await Promise.all(pairs.map(verifyCached));
+    for (const r of results) console.log(`[prewarm] ${r.id}: ${r.verdict}`);
+  } catch (err) {
+    console.error('[prewarm] failed:', err.message);
+  }
+}
+
 // ---------- server ----------
 
 const app = express();
@@ -208,7 +244,7 @@ app.post('/verify', async (req, res) => {
   if (!Array.isArray(pairs)) {
     return res.status(400).json({ results: [], error: 'Body must be { "pairs": [...] }' });
   }
-  const results = await Promise.all(pairs.map(verifyPair));
+  const results = await Promise.all(pairs.map(verifyCached));
   res.json({ results });
 });
 
@@ -218,4 +254,7 @@ app.use((err, _req, res, _next) => {
   res.status(err.status || 500).json({ results: [], error: err.message || 'Internal error' });
 });
 
-app.listen(PORT, () => console.log(`Receipts server listening on http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Receipts server listening on http://localhost:${PORT}`);
+  prewarm();
+});
