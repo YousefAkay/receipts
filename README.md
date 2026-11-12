@@ -1,4 +1,4 @@
-# Receipts
+# Receipts (Google Hackathon)
 
 **Does the source actually say that?**
 
