@@ -1,7 +1,7 @@
 import type { ClaimPair, VerifyResponse, VerifyResult } from './types';
 
 // Flip to false once the backend on :8787 is up.
-const USE_MOCK = true;
+const USE_MOCK = false;
 const VERIFY_URL = 'http://localhost:8787/verify';
 
 // Hardcoded mock response matching the API contract. The mock is cycled over
